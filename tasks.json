@@ -1,0 +1,44 @@
+[
+    {
+        "task_type": "sit-up-down",
+        "initiated_today": 3,
+        "cancelled_in_a_row": 1,
+        "last_feedback": "positive",
+        "performed_this_week": false,
+        "completion_time": 15,
+        "initial_completion_time": 20,
+        "previous_completion_times": [22, 18, 19],
+        "correction_cues": [0.5, 0.4, 0.6],
+        "pressure_spread": [],
+        "game_points": [],
+        "last_updated": "2023-06-28T15:00:00"
+    },
+    {
+        "task_type": "balance",
+        "initiated_today": 1,
+        "cancelled_in_a_row": 0,
+        "last_feedback": "neutral",
+        "performed_this_week": true,
+        "completion_time": 12,
+        "initial_completion_time": 15,
+        "previous_completion_times": [14, 15, 13],
+        "correction_cues": [],
+        "pressure_spread": [0.8, 0.75, 0.78],
+        "game_points": [],
+        "last_updated": "2023-06-28T16:00:00"
+    },
+    {
+        "task_type": "memory",
+        "initiated_today": 2,
+        "cancelled_in_a_row": 1,
+        "last_feedback": "negative",
+        "performed_this_week": true,
+        "completion_time": 50,
+        "initial_completion_time": 60,
+        "previous_completion_times": [58, 56, 55],
+        "correction_cues": [],
+        "pressure_spread": [],
+        "game_points": [100, 90, 110],
+        "last_updated": "2023-06-28T17:00:00"
+    }
+]
