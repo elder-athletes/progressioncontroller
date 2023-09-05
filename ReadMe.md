@@ -37,13 +37,13 @@ We use this information to assign points to each task. Then we record the points
 
 2. Understanding the Files
 
--Pre-Controller:
+- Pre-Controller:
 
 This is intended to run after a time-stamp we need to define where it describes the first initialisation of the machine. We run this script optimally for a week and ideally we try to cue users in short periods throughout the day to assess what task they are engaging and when. This creates a list where the times and days they interacted with the machine. We can create a histogram (this is not implemented yet) and use the hour data and day data to define optimal periods where the controller should cue the next task. We are doing this to get the estimate baseline time treshold they are most likely to interact with the machine.
 
 Pre-controller also has logic to use user prompts. Namely we need to ask the user if they are able to do the exercise. (By able I mean literal ability) If not that task should be eleminated from the queue. We also record how many times the user gets up from their chair. This metric creates the baseline for how many times we can ask user in one day to do a task. (Since they are likely to get up that much anyway)
 
--Engagment Data:
+- Engagment Data:
 
 Engagement Data is the json file where we record the data from the pre-controller. It creates a list with 15 minute intervals we record data under these periods.
 
@@ -56,23 +56,23 @@ ExtendedTask Class: Represents an individual task with its related metrics. We a
 
   Attributes:
 
-  task_type: Type of task (e.g., 'sit-up-down', 'balance', etc.).
-  initiated_today: Number of times the task was initiated today.
-  cancelled_in_a_row: Number of consecutive cancellations for this task.
-  last_feedback: Last feedback received for the task, could be 'positive' or otherwise.
-  performed_this_week: Boolean indicating if the task has been performed this week.
-  completion_time: Time taken to complete the task.
-  initial_completion_time: Initial time taken to complete the task.
-  previous_completion_times: List of times taken to complete the task in previous sessions.
-  correction_cues: Correction feedback received during the 'sit-up-down' task.
-  pressure_spread: Feedback on pressure distribution during the 'balance' task.
-  game_points: Points scored during the 'memory' game task.
-  weight_for_speed: Weight given to speed as a metric.
-  weight_for_correction: Weight given to correction feedback.
-  weight_for_pressure: Weight given to pressure distribution feedback.
-  weight_for_points: Weight given to points in the memory game.
-  last_updated: Timestamp indicating when the task metrics were last updated.
-  points: The total points calculated for the task based on its metrics.
+ - task_type: Type of task (e.g., 'sit-up-down', 'balance', etc.).
+ - initiated_today: Number of times the task was initiated today.
+ - cancelled_in_a_row: Number of consecutive cancellations for this task.
+ - last_feedback: Last feedback received for the task, could be 'positive' or otherwise.
+ - performed_this_week: Boolean indicating if the task has been performed this week.
+ - completion_time: Time taken to complete the task.
+ - initial_completion_time: Initial time taken to complete the task.
+ - previous_completion_times: List of times taken to complete the task in previous sessions.
+ - correction_cues: Correction feedback received during the 'sit-up-down' task.
+ - pressure_spread: Feedback on pressure distribution during the 'balance' task.
+ - game_points: Points scored during the 'memory' game task.
+ - weight_for_speed: Weight given to speed as a metric.
+ - weight_for_correction: Weight given to correction feedback.
+ - weight_for_pressure: Weight given to pressure distribution feedback.
+ - weight_for_points: Weight given to points in the memory game.
+ - last_updated: Timestamp indicating when the task metrics were last updated.
+ - points: The total points calculated for the task based on its metrics.
 
 = Methods =
 
@@ -85,13 +85,13 @@ update_memory(task_points_dict): Updates the JSON file (task_points.json) with t
 = Execution Flow =
 
   1. Load previously stored points from task_points.json.
-  2.Load tasks data from tasks.json.
-  3.Convert JSON tasks data to ExtendedTask objects.
-  4.For each task:
-    4.1.If the task's last update is more recent than what's stored in memory, recalculate the task points.
-    4.2.If the task points are stored in memory and are up-to-date, use the stored points.
-    4.3.Otherwise, calculate points for the task and update the memory.
-  5.Recommend the next task based on the highest points.
+  2. Load tasks data from tasks.json.
+  3. Convert JSON tasks data to ExtendedTask objects.
+  4. For each task:
+     - If the task's last update is more recent than what's stored in memory, recalculate the task points.
+     - If the task points are stored in memory and are up-to-date, use the stored points.
+     - Otherwise, calculate points for the task and update the memory.
+  5. Recommend the next task based on the highest points.
 
 = Outputs =
 
@@ -106,4 +106,18 @@ The script concludes by printing the recommended next task based on the calculat
 
 
 
-3. 
+3. What needs to be done for future development:
+
+- Initialising the server:
+
+The intent is to run this system on a server which communicates with the machine (throught the api) and the mongo. The data coming in from these sources need an additional script to format them into the tasks.json format.
+
+- Better time tresholding:
+
+Right now we are deciding on when to reccomend the task using the baseline engagement data we have. Ideally we want to extend the point based controller to ensure time tresholding isn't static. We want to have a window of time where we reccomend the task even if it is not the in the ideal period, more they engage with the task around that time more it should shift towards that. So it is dynamic histogram.
+
+- Experimentation with weights:
+
+Currently we don't have very rigirous reasons for assigning weights to the point allocations. Ideally we need them in place so when they are change we are able to change the intent of the controller. For example maximising compotance factor gain, minimising the task rejection etc. right now we priotrise engagement with the user.
+
+
