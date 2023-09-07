@@ -76,11 +76,11 @@ ExtendedTask Class: Represents an individual task with its related metrics. We a
 
 = Methods =
 
-calculate_competence_factor(): Calculates a competence factor based on various task metrics. This is then added onto the point metric calculation.
-calculate_points(task): Computes the points for a given task. Points are based on frequency, cancellations, feedback, task performance, and the competence factor. The weight of the points can be changed for different intent.
-recommend_next_task(tasks) Recommends the next task from a list of tasks based on the highest points. This is essentially what we want to return to the machine. The next task and the current list which represents the task queue.
-load_points_from_memory(): Loads previously stored points for tasks from a JSON file (task_points.json). The 
-update_memory(task_points_dict): Updates the JSON file (task_points.json) with the latest task points.
+- calculate_competence_factor(): Calculates a competence factor based on various task metrics. This is then added onto the point metric calculation.
+- calculate_points(task): Computes the points for a given task. Points are based on frequency, cancellations, feedback, task performance, and the competence factor. The weight of the points can be changed for different intent.
+- recommend_next_task(tasks) Recommends the next task from a list of tasks based on the highest points. This is essentially what we want to return to the machine. The next task and the current list which represents the task queue.
+- load_points_from_memory(): Loads previously stored points for tasks from a JSON file (task_points.json). The 
+- update_memory(task_points_dict): Updates the JSON file (task_points.json) with the latest task points.
 
 = Execution Flow =
 
