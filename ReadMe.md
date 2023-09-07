@@ -15,7 +15,8 @@ In very basic terms the what we are trying to do is engaging user as much as pos
     Points for the Memory Task 
     Amount of Corrective Cues given per task cycle for each task 
     Maximum/Average force applied to each pad 
-
+    Amount of times user standed up from their chair
+    
 Additionally control variables that maybe important for data allocation: 
 
     Stable Pressure point from the pressure spread 
