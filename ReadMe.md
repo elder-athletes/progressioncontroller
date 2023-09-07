@@ -114,7 +114,7 @@ The intent is to run this system on a server which communicates with the machine
 
 - Better time tresholding:
 
-Right now we are deciding on when to reccomend the task using the baseline engagement data we have. Ideally we want to extend the point based controller to ensure time tresholding isn't static. We want to have a window of time where we reccomend the task even if it is not the in the ideal period, more they engage with the task around that time more it should shift towards that. So it is dynamic histogram.
+Right now we are deciding on when to recommend the task using the baseline engagement data we have. Ideally we want to extend the point based controller to ensure time tresholding isn't static. We want to have a window of time where we reccomend the task even if it is not the in the ideal period, more they engage with the task around that time more it should shift towards that. So it is dynamic histogram.
 
 - Experimentation with weights:
 
