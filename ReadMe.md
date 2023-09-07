@@ -110,7 +110,7 @@ The script concludes by printing the recommended next task based on the calculat
 
 - Initialising the server:
 
-The intent is to run this system on a server which communicates with the machine (throught the api) and the mongo. The data coming in from these sources need an additional script to format them into the tasks.json format.
+The intent is to run this system on a server which communicates with the machine (throught the api) and the mongo. The data coming in from these sources need an additional script to format them into the tasks.json format. Also server needs to be able to call the pre-controller in the first week and then the point controller afterwards.
 
 - Better time tresholding:
 
@@ -119,5 +119,9 @@ Right now we are deciding on when to reccomend the task using the baseline engag
 - Experimentation with weights:
 
 Currently we don't have very rigirous reasons for assigning weights to the point allocations. Ideally we need them in place so when they are change we are able to change the intent of the controller. For example maximising compotance factor gain, minimising the task rejection etc. right now we priotrise engagement with the user.
+
+- Better Integration Between the Pre-Controller and the Point Based Controller:
+
+Point Based Controller should initially needs to recommend tasks (meaning adjust the next task's timestamp) by observing the data from the pre-controller. Also amount of times they get up from their chair in a day should reflect the amount of times point based controller cues the user. For instance if pre-controller recorded that the person stand up 10 times on Tuesday when precontroller was running, point based controller should at maximum cues exercised 10 times on a Tuesday. Like the time tresholding if this is dynamic it would be much better. One way to achieve this is recording the amount of times user engaged with the task last time and taking and average between the last and the current value to determine the new maximum limit of cueing the user. One other important bit would be to ensure the this number never reaches above or below a certain treshold meaning if user haven't interacted with the machine back to back, instead of limit reaching to a miniscule value it should default to the latest maximum instead if it gets too small.
 
 
